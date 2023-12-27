@@ -3,6 +3,8 @@ import 'package:egypt_tour/model/onboarding_model.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../widgets/dot_widget.dart';
+
 class OnBoarding extends StatefulWidget {
   static String routeName = 'onBoarding';
 
@@ -58,6 +60,7 @@ class _OnBoardingState extends State<OnBoarding> {
               },
             ),
           ),
+          DotsWidget(currentIndex: currentIndex)
         ],
       ),
     );
