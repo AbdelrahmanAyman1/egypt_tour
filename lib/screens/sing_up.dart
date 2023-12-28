@@ -1,27 +1,20 @@
+import 'package:egypt_tour/widgets/custom_button.dart';
+import 'package:egypt_tour/widgets/sing_up_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../widgets/custom_text_feild.dart';
-
-class SingUp extends StatefulWidget {
+class SingUp extends StatelessWidget {
   static String routeName = 'singUp';
 
   const SingUp({super.key});
-
-  @override
-  State<SingUp> createState() => _SingUpState();
-}
-
-class _SingUpState extends State<SingUp> {
-  bool passwordVisible = true;
-  IconData visibleIcon = Icons.visibility_off;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Center(
               child: Image.asset(
@@ -32,58 +25,25 @@ class _SingUpState extends State<SingUp> {
               ),
             ),
             Text(
+              textAlign: TextAlign.center,
               'Sing up',
               style: GoogleFonts.radioCanada(
                   fontWeight: FontWeight.bold, fontSize: 25.sp),
             ),
             Text(
+              textAlign: TextAlign.center,
               'please sign in to continue',
               style:
                   GoogleFonts.radioCanada(fontSize: 15.sp, color: Colors.grey),
             ),
-            SizedBox(height: 10.h),
-            const CustomTextField(hint: 'Enter Your Username'),
-            SizedBox(height: 10.h),
-            const CustomTextField(
-                hint: 'Enter Your Email',
-                keyboardType: TextInputType.emailAddress),
-            SizedBox(height: 10.h),
-            const CustomTextField(
-                hint: 'Enter Your Phone Number',
-                keyboardType: TextInputType.phone),
-            SizedBox(height: 10.h),
-            CustomTextField(
-                hint: 'Enter Your Password',
-                obscureText: passwordVisible,
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      visiblePassword();
-                    },
-                    icon: Icon(visibleIcon))),
-            SizedBox(height: 10.h),
-            CustomTextField(
-                hint: 'confirm password',
-                obscureText: passwordVisible,
-                suffixIcon: IconButton(
-                    onPressed: () {
-                      visiblePassword();
-                    },
-                    icon: Icon(visibleIcon))),
+            const SingUpForm(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
+              child: const CustomButton(text: 'Sign Up'),
+            )
           ],
         ),
       ),
     );
-  }
-
-  void visiblePassword() {
-    setState(() {
-      if (passwordVisible == true) {
-        passwordVisible = false;
-        visibleIcon = Icons.visibility;
-      } else if (passwordVisible == false) {
-        passwordVisible = true;
-        visibleIcon = Icons.visibility_off;
-      }
-    });
   }
 }
