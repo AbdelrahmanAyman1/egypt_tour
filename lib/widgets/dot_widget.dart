@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../constant/constant.dart';
 
@@ -17,12 +18,12 @@ class DotsWidget extends StatelessWidget {
         children: List.generate(
             content.length,
             (index) => AnimatedContainer(
-                margin: const EdgeInsetsDirectional.only(end: 2, bottom: 150),
+                margin: EdgeInsetsDirectional.only(end: 2.w),
                 decoration: BoxDecoration(
                     color: currentIndex == index ? primaryColor : Colors.grey,
-                    borderRadius: const BorderRadius.all(Radius.circular(50))),
-                height: 10,
-                width: currentIndex == index ? 50 : 20,
+                    borderRadius: BorderRadius.all(Radius.circular(50.w))),
+                height: 10.h,
+                width: currentIndex == index ? 50.w : 20.w,
                 duration: const Duration(milliseconds: 600))));
   }
 }
