@@ -1,4 +1,4 @@
-import 'package:egypt_tour/screens/onBoarding.dart';
+import 'package:egypt_tour/screens/onboarding_screen.dart';
 import 'package:egypt_tour/screens/sing_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
