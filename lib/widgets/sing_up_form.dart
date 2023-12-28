@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'custom_text_feild.dart';
 
 class SingUpForm extends StatefulWidget {
