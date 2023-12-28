@@ -23,7 +23,7 @@ class _OnBoardingState extends State<OnBoarding> {
     return Scaffold(
       appBar: AppBar(
         leading: Image.asset(
-          'assets/images/img.png',
+          'assets/images/logo.png',
         ),
       ),
       body: Column(
