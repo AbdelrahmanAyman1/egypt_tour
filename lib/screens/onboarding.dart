@@ -1,8 +1,6 @@
 import 'package:egypt_tour/constant/constant.dart';
 import 'package:egypt_tour/model/onboarding_model.dart';
-import 'package:egypt_tour/screens/sing_up.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/dot_widget.dart';
@@ -40,15 +38,11 @@ class _OnBoardingState extends State<OnBoarding> {
               itemBuilder: (context, index) {
                 return Column(
                   children: [
-                    Image.asset(
-                      content[currentIndex].image,
-                      height: 300.h,
-                      width: 300.w,
-                    ),
+                    Image.asset(content[currentIndex].image),
                     Text(
                       content[currentIndex].title,
                       style: GoogleFonts.radioCanada(
-                          fontSize: 22.sp,
+                          fontSize: 28,
                           fontWeight: FontWeight.bold,
                           color: const Color(0xff89C9FF)),
                     ),
@@ -57,7 +51,7 @@ class _OnBoardingState extends State<OnBoarding> {
                           textAlign: TextAlign.center,
                           content[currentIndex].desc,
                           style: GoogleFonts.radioCanada(
-                            fontSize: 18.sp,
+                            fontSize: 18,
                             color: Colors.black,
                           )),
                     ),
@@ -66,32 +60,7 @@ class _OnBoardingState extends State<OnBoarding> {
               },
             ),
           ),
-          DotsWidget(currentIndex: currentIndex),
-          Padding(
-            padding: const EdgeInsets.all(50).w,
-            child: ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  currentIndex != content.length - 1
-                      ? currentIndex++
-                      : Navigator.pushReplacementNamed(
-                          context, SingUp.routeName);
-                });
-              },
-              style: ElevatedButton.styleFrom(
-                  backgroundColor: primaryColor, foregroundColor: Colors.white),
-              child: Text(
-                currentIndex == 0
-                    ? 'Lets get started'
-                    : currentIndex == 1
-                        ? 'Continue'
-                        : 'Create Account',
-                style: GoogleFonts.radioCanada(
-                  fontSize: 24.sp,
-                ),
-              ),
-            ),
-          ),
+          DotsWidget(currentIndex: currentIndex)
         ],
       ),
     );
