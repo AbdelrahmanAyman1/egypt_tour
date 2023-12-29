@@ -1,4 +1,5 @@
 import 'package:egypt_tour/screens/onboarding_screen.dart';
+import 'package:egypt_tour/screens/sing_in.dart';
 import 'package:egypt_tour/screens/sing_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
           initialRoute: OnBoarding.routeName,
           routes: {
             OnBoarding.routeName: (context) => const OnBoarding(),
-            SingUp.routeName: (context) => const SingUp()
+            SingUp.routeName: (context) => const SingUp(),
+            SingIn.routeName: (context) => const SingIn(),
           },
         );
       },
