@@ -1,4 +1,5 @@
 import 'package:egypt_tour/constant/constant.dart';
+import 'package:egypt_tour/screens/sing_in.dart';
 import 'package:egypt_tour/widgets/custom_button.dart';
 import 'package:egypt_tour/widgets/sing_up_form.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +34,7 @@ class SingUp extends StatelessWidget {
             ),
             Text(
               textAlign: TextAlign.center,
-              'please sign in to continue',
+              'please sign up to continue',
               style:
                   GoogleFonts.radioCanada(fontSize: 15.sp, color: Colors.grey),
             ),
@@ -82,7 +83,9 @@ class SingUp extends StatelessWidget {
                       fontWeight: FontWeight.bold),
                 ),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushReplacementNamed(context, SingIn.routeName);
+                  },
                   child: Text(
                     'Sing in',
                     style: GoogleFonts.radioCanada(
