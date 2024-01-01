@@ -1,4 +1,5 @@
 import 'package:egypt_tour/constant/constant.dart';
+import 'package:egypt_tour/widgets/custom_button.dart';
 import 'package:egypt_tour/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +16,7 @@ class ForgetPasswordScreen extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(8.0.w),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
               'assets/images/forget_password.gif',
@@ -23,6 +25,7 @@ class ForgetPasswordScreen extends StatelessWidget {
             ),
             SizedBox(height: 10.h),
             Text(
+              textAlign: TextAlign.center,
               'Forget your password?',
               style: GoogleFonts.radioCanada(
                   fontWeight: FontWeight.bold,
@@ -36,7 +39,18 @@ class ForgetPasswordScreen extends StatelessWidget {
               style: GoogleFonts.radioCanada(fontSize: 18.sp),
             ),
             SizedBox(height: 10.h),
-            const CustomTextField(hint: 'Enter your email')
+            const CustomTextField(
+                hint: 'Enter your email',
+                keyboardType: TextInputType.emailAddress,
+                errorMessage: 'please enter your email'),
+            SizedBox(height: 10.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 100.w),
+              child: CustomButton(
+                text: 'Reset Password',
+                onPressed: () {},
+              ),
+            )
           ],
         ),
       ),
