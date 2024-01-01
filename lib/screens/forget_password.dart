@@ -1,4 +1,5 @@
 import 'package:egypt_tour/constant/constant.dart';
+import 'package:egypt_tour/widgets/custom_text_feild.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -34,6 +35,8 @@ class ForgetPasswordScreen extends StatelessWidget {
               'That\'s ok. it happens! Enter your email to reset password ',
               style: GoogleFonts.radioCanada(fontSize: 18.sp),
             ),
+            SizedBox(height: 10.h),
+            const CustomTextField(hint: 'Enter your email')
           ],
         ),
       ),
