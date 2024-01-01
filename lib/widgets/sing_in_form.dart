@@ -1,4 +1,5 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:egypt_tour/screens/forget_password.dart';
 import 'package:egypt_tour/screens/home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -73,12 +74,18 @@ class _SingInFormState extends State<SingInForm> {
               margin: EdgeInsetsDirectional.symmetric(
                   vertical: 5.h, horizontal: 10.w),
               alignment: Alignment.bottomRight,
-              child: Text(
-                'Forget Password ?',
-                style: GoogleFonts.radioCanada(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14.sp,
-                    color: Colors.red),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pushReplacementNamed(
+                      context, ForgetPasswordScreen.routeName);
+                },
+                child: Text(
+                  'Forget Password ?',
+                  style: GoogleFonts.radioCanada(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14.sp,
+                      color: Colors.red),
+                ),
               ),
             ),
             SizedBox(height: 10.h),

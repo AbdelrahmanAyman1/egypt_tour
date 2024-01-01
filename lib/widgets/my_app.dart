@@ -1,3 +1,4 @@
+import 'package:egypt_tour/screens/forget_password.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../screens/home.dart';
@@ -23,7 +24,9 @@ class MyApp extends StatelessWidget {
             OnBoarding.routeName: (context) => const OnBoarding(),
             SingUp.routeName: (context) => const SingUp(),
             SingIn.routeName: (context) => const SingIn(),
-            HomeScreen.routeName: (context) => const HomeScreen()
+            HomeScreen.routeName: (context) => const HomeScreen(),
+            ForgetPasswordScreen.routeName: (context) =>
+                const ForgetPasswordScreen()
           },
         );
       },
