@@ -1,11 +1,14 @@
+import 'package:egypt_tour/screens/home.dart';
 import 'package:egypt_tour/screens/sing_up.dart';
+import 'package:egypt_tour/widgets/connected_with_row.dart';
+import 'package:egypt_tour/widgets/have_acc_or_not.dart';
 import 'package:egypt_tour/widgets/sing_in_form.dart';
+import 'package:egypt_tour/widgets/singin_and_singup_logo.dart';
+import 'package:egypt_tour/widgets/title_and_desc.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
-
-import '../constant/constant.dart';
-import '../widgets/custom_button.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SingIn extends StatelessWidget {
   static String routeName = 'singIn';
@@ -16,98 +19,51 @@ class SingIn extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Center(
-            child: Image.asset(
-              'assets/images/logo.png',
-              height: 154.h,
-              width: 153.w,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Text(
-            textAlign: TextAlign.center,
-            'Sing in',
-            style: GoogleFonts.radioCanada(
-                fontWeight: FontWeight.bold, fontSize: 25.sp),
-          ),
-          Text(
-            textAlign: TextAlign.center,
-            'please sign in to continue',
-            style: GoogleFonts.radioCanada(fontSize: 15.sp, color: Colors.grey),
-          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+          const Center(child: Logo()),
+          const TitleAndDescription(
+              title: 'Sign In', desc: 'please sign in to continue'),
           SizedBox(height: 30.h),
           const SingInForm(),
-          SizedBox(height: 5.h),
-          Text(
-            '        Forget password ?',
-            style: GoogleFonts.radioCanada(
-                fontWeight: FontWeight.bold,
-                fontSize: 14.sp,
-                color: Colors.red),
-          ),
-          SizedBox(height: 10.h),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 25.w, vertical: 10.h),
-            child: const CustomButton(text: 'Sign In'),
-          ),
-          SizedBox(height: 10.h),
-          Row(
-            children: [
-              Expanded(
-                  child: Divider(
-                thickness: 2,
-                color: Colors.black,
-                endIndent: 2.w,
-                indent: 20.w,
-              )),
-              Text(
-                'Or connected With',
-                style: GoogleFonts.radioCanada(
-                    fontWeight: FontWeight.bold, fontSize: 18.sp),
-              ),
-              Expanded(
-                  child: Divider(
-                thickness: 2,
-                color: Colors.black,
-                endIndent: 20.w,
-                indent: 2.w,
-              )),
-            ],
-          ),
+          const ConnectedWithRow(),
           SizedBox(height: 10.h),
           InkWell(
+              onTap: () {
+                signInWithGoogle(context);
+              },
               child: Image.asset('assets/images/google_logo.png',
                   height: 24.h, width: 24.w)),
           SizedBox(height: 10.h),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Don’t have an account ? ',
-                style: GoogleFonts.radioCanada(
-                    color: Colors.black,
-                    fontSize: 16.sp,
-                    fontWeight: FontWeight.bold),
-              ),
-              InkWell(
-                onTap: () {
-                  Navigator.pushReplacementNamed(context, SingUp.routeName);
-                },
-                child: Text(
-                  'Sing up',
-                  style: GoogleFonts.radioCanada(
-                      color: primaryColor,
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.bold),
-                ),
-              ),
-            ],
+          HaveAccountOrNot(
+            questionText: 'Don’t have an account ? ',
+            goToPage: 'sing in',
+            onTap: () {
+              Navigator.pushReplacementNamed(context, SingUp.routeName);
+            },
           )
         ],
       ),
     ));
+  }
+
+  Future<void> signInWithGoogle(BuildContext context) async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
+
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
+
+    // Once signed in, return the UserCredential
+    await FirebaseAuth.instance.signInWithCredential(credential);
+    Navigator.pushReplacementNamed(context, HomeScreen.routeName);
   }
 }

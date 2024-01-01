@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "570994984417",
+    "project_id": "egypt-tour-6a9d7",
+    "storage_bucket": "egypt-tour-6a9d7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:570994984417:android:6783d28421f3339d91bea0",
+        "android_client_info": {
+          "package_name": "com.example.egypt_tour"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "570994984417-tit15hi3o5u93qnh6iaftpmt25a7bmbr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.egypt_tour",
+            "certificate_hash": "05fc349ae579f0223b1ca087890d17745e0c2cff"
+          }
+        },
+        {
+          "client_id": "570994984417-g3cljjg6qbs3o617ub30quggodi9mfff.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCkvtK2dSNkRgMowwgIW2mw-7qu33-uPyw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "570994984417-g3cljjg6qbs3o617ub30quggodi9mfff.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "570994984417-e5g8kuirvsocko47dancdf51pn3r644p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.egyptTour"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
