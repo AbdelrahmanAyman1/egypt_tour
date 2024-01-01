@@ -11,22 +11,31 @@ class ForgetPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Image.asset(
-            'assets/images/forget_password.gif',
-            height: 300.h,
-            width: double.infinity.w,
-          ),
-          SizedBox(height: 10.h),
-          Text(
-            'Forget your password?',
-            style: GoogleFonts.radioCanada(
-                fontWeight: FontWeight.bold,
-                fontSize: 22.sp,
-                color: primaryColor),
-          )
-        ],
+      body: Padding(
+        padding: EdgeInsets.all(8.0.w),
+        child: Column(
+          children: [
+            Image.asset(
+              'assets/images/forget_password.gif',
+              height: 300.h,
+              width: double.infinity.w,
+            ),
+            SizedBox(height: 10.h),
+            Text(
+              'Forget your password?',
+              style: GoogleFonts.radioCanada(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 22.sp,
+                  color: primaryColor),
+            ),
+            SizedBox(height: 10.h),
+            Text(
+              textAlign: TextAlign.center,
+              'That\'s ok. it happens! Enter your email to reset password ',
+              style: GoogleFonts.radioCanada(fontSize: 18.sp),
+            ),
+          ],
+        ),
       ),
     );
   }
