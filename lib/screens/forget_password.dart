@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ForgetPasswordScreen extends StatelessWidget {
   static String routeName = 'forgetPasswordScreen';
@@ -7,6 +8,16 @@ class ForgetPasswordScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      body: Column(
+        children: [
+          Image.asset(
+            'assets/images/forget_password.gif',
+            height: 300.h,
+            width: double.infinity.w,
+          )
+        ],
+      ),
+    );
   }
 }

@@ -42,7 +42,7 @@ class _OnBoardingState extends State<OnBoarding> {
                     Image.asset(
                       content[currentIndex].image,
                       height: 300.h,
-                      width: 300.w,
+                      width: double.infinity.w,
                     ),
                     Text(
                       content[currentIndex].title,
