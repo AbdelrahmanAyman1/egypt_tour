@@ -1,7 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import 'custom_button.dart';
 import 'custom_text_feild.dart';
 
@@ -31,7 +31,8 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
             style: GoogleFonts.radioCanada(fontSize: 18.sp),
           ),
           SizedBox(height: 10.h),
-          const CustomTextField(
+          CustomTextField(
+              controller: emailController,
               hint: 'Enter your email',
               keyboardType: TextInputType.emailAddress,
               errorMessage: 'please enter your email'),
@@ -43,6 +44,7 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
               onPressed: () {
                 if (formKey.currentState!.validate()) {
                   formKey.currentState!.save();
+                  resetPassword();
                 } else {
                   autoValidateMode = AutovalidateMode.always;
                   setState(() {});
@@ -53,5 +55,14 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
         ],
       ),
     );
+  }
+
+  void resetPassword() async {
+    try {
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: emailController.text);
+    } on FirebaseAuthException catch (e) {
+      print(e);
+    }
   }
 }

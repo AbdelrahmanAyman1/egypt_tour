@@ -17,7 +17,7 @@ class SingUpForm extends StatefulWidget {
 
 class _SingUpFormState extends State<SingUpForm> {
   bool passwordVisible = true;
-  final GlobalKey<FormState> fomKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   IconData visibleIcon = Icons.visibility_off;
 
@@ -33,7 +33,7 @@ class _SingUpFormState extends State<SingUpForm> {
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: fomKey,
+      key: formKey,
       autovalidateMode: autoValidateMode,
       child: Padding(
         padding: EdgeInsets.all(16.0.w),
@@ -99,8 +99,8 @@ class _SingUpFormState extends State<SingUpForm> {
               child: CustomButton(
                 text: 'Sign Up',
                 onPressed: () {
-                  if (fomKey.currentState!.validate()) {
-                    fomKey.currentState!.save();
+                  if (formKey.currentState!.validate()) {
+                    formKey.currentState!.save();
                     singUp();
                   } else {
                     autoValidateMode = AutovalidateMode.always;

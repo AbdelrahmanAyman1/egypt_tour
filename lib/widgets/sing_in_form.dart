@@ -18,7 +18,7 @@ class SingInForm extends StatefulWidget {
 class _SingInFormState extends State<SingInForm> {
   bool passwordVisible = true;
   IconData visibleIcon = Icons.visibility_off;
-  final GlobalKey<FormState> fomKey = GlobalKey();
+  final GlobalKey<FormState> formKey = GlobalKey();
   AutovalidateMode autoValidateMode = AutovalidateMode.disabled;
   TextEditingController emailController = TextEditingController();
 
@@ -29,7 +29,7 @@ class _SingInFormState extends State<SingInForm> {
     return Padding(
       padding: EdgeInsets.all(16.w),
       child: Form(
-        key: fomKey,
+        key: formKey,
         autovalidateMode: autoValidateMode,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -76,8 +76,7 @@ class _SingInFormState extends State<SingInForm> {
               alignment: Alignment.bottomRight,
               child: InkWell(
                 onTap: () {
-                  Navigator.pushReplacementNamed(
-                      context, ForgetPasswordScreen.routeName);
+                  Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
                 },
                 child: Text(
                   'Forget Password ?',
@@ -94,8 +93,8 @@ class _SingInFormState extends State<SingInForm> {
               child: CustomButton(
                   text: 'Sign In',
                   onPressed: () {
-                    if (fomKey.currentState!.validate()) {
-                      fomKey.currentState!.save();
+                    if (formKey.currentState!.validate()) {
+                      formKey.currentState!.save();
                       singIn();
                     } else {
                       autoValidateMode = AutovalidateMode.always;
@@ -115,7 +114,7 @@ class _SingInFormState extends State<SingInForm> {
           email: emailController.text, password: passwordController.text);
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     } on FirebaseAuthException catch (e) {
-      if (e.code.isNotEmpty) {
+      if (e.code == 'user-not-found') {
         awesomeDialog('No user found for that email.');
         print('No user found for that email.');
       } else if (e.code.isNotEmpty) {
