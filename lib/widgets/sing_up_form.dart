@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../helper/show_dailog.dart';
 import '../screens/home.dart';
 import 'custom_button.dart';
 import 'custom_text_feild.dart';
@@ -125,25 +126,13 @@ class _SingUpFormState extends State<SingUpForm> {
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     } on FirebaseAuthException catch (e) {
       if (e.code.isNotEmpty) {
-        awesomeDialog(e.message.toString());
+        awesomeDialog('error', e.message.toString(), context, DialogType.error);
       } else if (e.code.isNotEmpty) {
-        awesomeDialog(e.message.toString());
+        awesomeDialog('error', e.message.toString(), context, DialogType.error);
       }
     } catch (e) {
       debugPrint(e as String?);
     }
-  }
-
-  Future awesomeDialog(String desc) {
-    return AwesomeDialog(
-      context: context,
-      dialogType: DialogType.error,
-      animType: AnimType.rightSlide,
-      title: 'error',
-      desc: desc,
-      //         btnCancelOnPress: () {},
-      // btnOkOnPress: () {},
-    ).show();
   }
 
   Future<void> addUser() {

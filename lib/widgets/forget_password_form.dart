@@ -1,7 +1,9 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../helper/show_dailog.dart';
 import 'custom_button.dart';
 import 'custom_text_feild.dart';
 
@@ -61,6 +63,11 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
     try {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailController.text);
+      awesomeDialog(
+          'info',
+          'We have sent a link to your email to reset password',
+          context,
+          DialogType.info);
     } on FirebaseAuthException catch (e) {
       print(e);
     }

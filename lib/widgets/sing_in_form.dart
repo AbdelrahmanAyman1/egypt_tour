@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../helper/show_dailog.dart';
 import 'custom_button.dart';
 import 'custom_text_feild.dart';
 
@@ -115,25 +116,15 @@ class _SingInFormState extends State<SingInForm> {
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        awesomeDialog('No user found for that email.');
+        awesomeDialog('error', 'No user found for that email.', context,
+            DialogType.error);
         print('No user found for that email.');
       } else if (e.code.isNotEmpty) {
-        awesomeDialog('Wrong password provided for that user.');
+        awesomeDialog('error', 'Wrong password provided for that user.',
+            context, DialogType.error);
         print('Wrong password provided for that user.');
       }
     }
-  }
-
-  Future awesomeDialog(String desc) {
-    return AwesomeDialog(
-      context: context,
-      dialogType: DialogType.error,
-      animType: AnimType.rightSlide,
-      title: 'error',
-      desc: desc,
-      //         btnCancelOnPress: () {},
-      // btnOkOnPress: () {},
-    ).show();
   }
 
   void visiblePassword() {
