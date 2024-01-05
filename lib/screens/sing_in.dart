@@ -38,7 +38,7 @@ class SingIn extends StatelessWidget {
           SizedBox(height: 10.h),
           HaveAccountOrNot(
             questionText: 'Don’t have an account ? ',
-            goToPage: 'sing in',
+            goToPage: 'sing up',
             onTap: () {
               Navigator.pushReplacementNamed(context, SingUp.routeName);
             },
