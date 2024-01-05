@@ -1,4 +1,5 @@
 import 'package:egypt_tour/screens/forget_password.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../screens/home.dart';
@@ -19,7 +20,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
-          initialRoute: OnBoarding.routeName,
+          initialRoute: FirebaseAuth.instance.currentUser == null
+              ? OnBoarding.routeName
+              : HomeScreen.routeName,
           routes: {
             OnBoarding.routeName: (context) => const OnBoarding(),
             SingUp.routeName: (context) => const SingUp(),

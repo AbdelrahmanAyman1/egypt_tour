@@ -1,5 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:egypt_tour/screens/sing_in.dart';
+import 'package:egypt_tour/screens/sing_up.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -123,7 +125,7 @@ class _SingUpFormState extends State<SingUpForm> {
         password: passwordController.text,
       );
       addUser();
-      Navigator.pushReplacementNamed(context, HomeScreen.routeName);
+      Navigator.pushReplacementNamed(context, SingIn.routeName);
     } on FirebaseAuthException catch (e) {
       if (e.code.isNotEmpty) {
         awesomeDialog('error', e.message.toString(), context, DialogType.error);
